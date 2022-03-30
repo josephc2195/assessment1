@@ -11,8 +11,10 @@ public class DogGenetics {
         dogName = sc.next();
 
         System.out.println("Well then, I have this highly reliable report on " + dogName + "\'s prestigious background right here.");
-
+        //start with a random number from 1-100
         bulldog = rand.nextInt(100);
+        
+        //then subtract that from 100, and get the next dog's random percentage and so on...
         husky = rand.nextInt(100 - bulldog);
         chihuahua = rand.nextInt(100 - (bulldog + husky));
         boxer = rand.nextInt(100-(bulldog + husky + chihuahua));
