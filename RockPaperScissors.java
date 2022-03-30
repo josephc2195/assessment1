@@ -72,28 +72,28 @@ public class RockPaperScissors {
     }
 
     
-    public static String game(int uc, int cc) {
+    public static String game(int userChoice, int compChoice) {
         String winner = "";
         //have all possible outcomes and their winner
-        if(uc == cc) {
+        if(userChoice == compChoice) {
             winner = "tie";
         }
-        else if (uc == 1 && cc == 2) { 
+        else if (userChoice == 1 && compChoice == 2) { 
             winner = "computer";
         }
-        else if(uc == 1 && cc == 3) {
+        else if(userChoice == 1 && compChoice == 3) {
             winner = "user";
         }
-        else if(uc == 2 && cc == 1) {
+        else if(userChoice == 2 && compChoice == 1) {
             winner = "user";
         }
-        else if(uc == 2 && cc == 3) {
+        else if(userChoice == 2 && compChoice == 3) {
             winner = "computer";
         }
-        else if(uc == 3 && cc == 1) {
+        else if(userChoice == 3 && compChoice == 1) {
             winner = "computer";
         }
-        else if(uc == 3 && cc == 2) {
+        else if(userChoice == 3 && compChoice == 2) {
             winner = "user";
         }
         return winner;
