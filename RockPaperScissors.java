@@ -1,11 +1,12 @@
 import java.util.*;
 
+//program that has user play rock paper scissors by using random number generator 
 public class RockPaperScissors {
     public static void main(String[] args) {
         String roundWinner = "";
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
-        boolean cont = true, numCheck = false;
+        boolean cont = true;
         
         while(cont) {
             int rounds=0, ties=0, userWins=0, compWins=0, userChoice, compChoice, playAgain;
@@ -14,22 +15,24 @@ public class RockPaperScissors {
                 try {
                     System.out.print("Enter the number of rounds you would like to play (1-10): ");
                     rounds = sc.nextInt();
-                    if(rounds > 0 && rounds < 11) {
-                        numCheck = true;
-                    }
                 } catch(NumberFormatException ex) {
                     System.out.println(ex + " is not a number between 1 and 10. ");
                 }
-            } while(!numCheck);
+            } while(rounds < 1 || rounds > 10);
 
             //the actual game starts:
             for(int i = 0; i < rounds; i++) {
-                System.out.println("Please select one of the following: ");
-                System.out.println("1. Rock");
-                System.out.println("2. Paper");
-                System.out.println("3. Scissors");
-                //user selects 1, 2 or 3 for their choice
-                userChoice = sc.nextInt();
+                //game menu. user selects an option, which is saved into a variable
+                do {
+                    System.out.println("Please select one of the following: ");
+                    System.out.println("1. Rock");
+                    System.out.println("2. Paper");
+                    System.out.println("3. Scissors");
+
+                    //user selects 1, 2 or 3 for their choice
+                    userChoice = sc.nextInt();
+                } while(userChoice < 1 || userChoice > 3);
+                
                 //computer randomly gets a 1, 2 or 3 as well
                 compChoice = rand.nextInt(3) + 1;
 
@@ -44,6 +47,9 @@ public class RockPaperScissors {
                         break;
                     case "computer":
                         compWins++;
+                        break;
+                    default:
+                        System.out.println("Incorrect input. Try again");
                         break;
                 }
                 //prints round winner to console
