@@ -3,7 +3,7 @@ import java.util.*;
 //program that has user play rock paper scissors by using random number generator 
 public class RockPaperScissors {
     public static void main(String[] args) {
-        String roundWinner = "";
+        String roundWinner = "", endingString="";
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
         boolean cont = true;
@@ -36,9 +36,11 @@ public class RockPaperScissors {
                 //computer randomly gets a 1, 2 or 3 as well
                 compChoice = rand.nextInt(3) + 1;
 
+                //using my game method that returns a string with the winner for that particular game
                 roundWinner = game(userChoice, compChoice);
                 //switch statement for the winner, adds to win total
                 switch(roundWinner) {
+                    //increment the wins for each particular player/ties
                     case "tie": 
                         ties++;
                         break;
@@ -62,8 +64,8 @@ public class RockPaperScissors {
             System.out.println("Ties: " + ties);
             System.out.println("Overall game winner: ");
 
-            //calculating over all game winner
-            winner(userWins, compWins, ties);
+            //calculating over all game winner and printing the result in the main
+            System.out.println(winner(userWins, compWins, ties));
 
             System.out.println("Would you like to play again?");
             System.out.println("1. Yes");
@@ -84,37 +86,34 @@ public class RockPaperScissors {
         if(userChoice == compChoice) {
             winner = "tie";
         }
-        else if (userChoice == 1 && compChoice == 2) { 
+        else if (userChoice == 1 && compChoice == 2) { //paper beats rock
             winner = "computer";
         }
-        else if(userChoice == 1 && compChoice == 3) {
+        else if(userChoice == 1 && compChoice == 3) { //rock beats scissors
             winner = "user";
         }
-        else if(userChoice == 2 && compChoice == 1) {
+        else if(userChoice == 2 && compChoice == 1) { //paper beats rock
             winner = "user";
         }
-        else if(userChoice == 2 && compChoice == 3) {
+        else if(userChoice == 2 && compChoice == 3) { //scissors beats paper
             winner = "computer";
         }
-        else if(userChoice == 3 && compChoice == 1) {
+        else if(userChoice == 3 && compChoice == 1) { //rock beats scissors
             winner = "computer";
         }
-        else if(userChoice == 3 && compChoice == 2) {
+        else if(userChoice == 3 && compChoice == 2) { //scissors beat paper
             winner = "user";
         }
         return winner;
     } 
 
-    public static void winner(int userWins, int compWins, int ties) {
+    public static String winner(int userWins, int compWins, int ties) {
             if(userWins > compWins) {
-                System.out.println("You!");
+                return "You!";
             }
             else if(compWins > userWins) { 
-                System.out.println("The computer");
+                return "The Computer wins";
             }
-            else {
-                System.out.println("Tie!");
-            }
-        
+            return "Tie";
     }
 }
